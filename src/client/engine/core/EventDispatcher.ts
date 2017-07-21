@@ -46,8 +46,8 @@ export class EventDispatcher implements IEventDispatcher {
 
     addEventListener(eventName:string, callback:(...args:any[]) => any, context?:any):void {
 
-        /*if (!this.isValidActionOrEventName(eventName))
-            throw new Error(Errors.ERROR_SUBSCRIBING_EVENT_NAME_NOT_TYPE_STRING);*/
+        if (!this.isValidActionOrEventName(eventName))
+            throw new Error(Errors.ERROR_SUBSCRIBING_EVENT_NAME_NOT_TYPE_STRING);
 
         if (callback === undefined || callback === null)
             throw new Error(Errors.ERROR_NO_HANDLER_WHILE_SUBSCRIBING);
