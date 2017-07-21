@@ -1,5 +1,5 @@
-
-
+[![Coverage Status](https://coveralls.io/repos/github/pranusony/youtube-angular/badge.svg?branch=master)](https://coveralls.io/github/pranusony/youtube-angular?branch=master)
+[![Build Status](https://travis-ci.org/pranusony/youtube-angular.svg?branch=master)](https://travis-ci.org/pranusony/youtube-angular)
 #### About
 - This is a basic starter template for getting quick start on full featured web application written in [Typescript](https://www.typescriptlang.org/index.html) and using [Webpack](https://webpack.js.org/).
 - This template also include full Software Development Lifecycle support. Which means you can quickly develop, test and deploy your application to production
