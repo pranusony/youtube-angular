@@ -4,29 +4,6 @@
 - This is a basic starter template for getting quick start on full featured web application written in [Typescript](https://www.typescriptlang.org/index.html) and using [Webpack](https://webpack.js.org/).
 - This template also include full Software Development Lifecycle support. Which means you can quickly develop, test and deploy your application to production
 
-
-#### How to use this template
-
-1. Using [Raappid](https://github.com/coolchem/raappid), a project scaffolding tool.
-
-    1. install raappid if not already installed: 
-    
-        ```
-        npm install -g raappid
-        ```
-        
-    2. In your terminal go to to directory where you want to create your project and run command
-    
-       ```
-        raappid web-app project-name
-       ```
-
-2. Clone or download the repository and run command as below to setup all your dependencies
-
-    ```
-    npm install 
-    ```
-
 #### Features
 - No Frontend Framework is used. The choice is yours.
 - Styling is Powered by [Sass](http://sass-lang.com/)  
