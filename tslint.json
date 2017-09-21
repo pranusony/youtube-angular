@@ -16,7 +16,7 @@
         "no-unsafe-finally": true,
         "no-var-keyword": true,
         "one-variable-per-declaration":true,
-        "no-parameter-properties": true,
+        "no-parameter-properties": false,
         "no-consecutive-blank-lines": true,
         "new-parens": true,
         "one-line": [

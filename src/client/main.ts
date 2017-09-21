@@ -1,8 +1,8 @@
 
-import {Application} from "./views/views";
+import "reflect-metadata";
+import "rxjs";
+import "zone.js"; // required by angular
 
-let appNode:HTMLDivElement = document.getElementById("app") as HTMLDivElement;
-
-let application:Application = new Application(appNode);
-
-application.initialize();
+import {AppModule} from "./AppModule";
+import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
+platformBrowserDynamic().bootstrapModule(AppModule);
