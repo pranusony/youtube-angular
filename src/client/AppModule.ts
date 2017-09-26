@@ -5,11 +5,14 @@ import {HttpModule} from "@angular/http";
 import {Search} from  "./views/search";
 import {YouTubeService} from "./services/YouTubeService";
 import {ReactiveFormsModule} from "@angular/forms";
+import { YoutubePlayerModule } from "ng2-youtube-player";
+
 @NgModule({
     imports: [
         HttpModule,
         BrowserModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        YoutubePlayerModule
     ],
     declarations:[
         Application,

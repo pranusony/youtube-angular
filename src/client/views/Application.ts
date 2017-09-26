@@ -5,6 +5,7 @@ import {Component} from "@angular/core";
     selector: "app",
     template: `<section>
         <search></search>
+        
     </section>`
 
 })

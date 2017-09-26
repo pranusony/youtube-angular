@@ -1,7 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ViewChild} from "@angular/core";
 import {YouTubeService} from "../services/YouTubeService";
 import {FormControl} from "@angular/forms";
-import {Observable} from "rxjs/Observable";
+
+declare  const YT:any;
+declare const global:any;
+
 @Component({
     selector: "search",
     providers: [YouTubeService],
@@ -14,17 +17,26 @@ import {Observable} from "rxjs/Observable";
                 <button class="btn btn-default" (click)="handleSearchButtonClicked()"><i class="glyphicon glyphicon-search"></i></button>
             </div>
         </div>
-        <div *ngFor="let video of searchResults">
+        <div id="player"></div>
+        <div *ngFor="let video of searchResults" (click)="playVideo(video)">
             <h6>{{video.snippet.title}}</h6>
             <img [src]="video.snippet.thumbnails.default.url"/>
         </div>
+        
     </section>`
 })
 
-export class Search  {
+export class Search implements AfterViewInit {
+
+    @ViewChild("videoPlayer") videoplayer: any;
+
+    private player;
+    private isPlayerAPIReady:boolean = false;
+    private isViewCreated:boolean = false;
 
     inputField: FormControl = new FormControl();
     searchResults:any[] = [];
+    private currentVideoID: string = " ";
 
     private searchQuery:string;
 
@@ -35,6 +47,20 @@ export class Search  {
            .subscribe((input) => {
                 this.searchQuery = input;
            });
+
+       // 2. This code loads the IFrame Player API code asynchronously.
+       let tag = document.createElement("script");
+
+       tag.src = "https://www.youtube.com/iframe_api";
+       let firstScriptTag = document.getElementsByTagName("script")[0];
+       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+       // 3. This function creates an <iframe> (and YouTube player)
+       //    after the API code downloads.
+       global.onYouTubeIframeAPIReady = () => {
+            this.isPlayerAPIReady = true;
+            this.createYTPlayer();
+       };
 
    }
 
@@ -49,5 +75,49 @@ export class Search  {
                 this.searchResults = items;
            });
    }
+
+   playVideo(video:any) {
+       this.player.loadVideoById(video.id.videoId);
+   }
+    ngAfterViewInit(): void {
+
+       this.isViewCreated = true;
+       this.createYTPlayer();
+
+/*        // 2. This code loads the IFrame Player API code asynchronously.
+        let tag = document.createElement("script");
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        let firstScriptTag = document.getElementsByTagName("script")[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        global.onYouTubeIframeAPIReady = () => {
+           this. player = new YT.Player("player", {
+                height: "390",
+                width: "640",
+                videoId: "",
+
+            });
+        };*/
+
+        // 4. The API will call this function when the video player is ready
+
+    }
+
+    createYTPlayer():void {
+
+       if(this.isPlayerAPIReady && this.isViewCreated) {
+
+           this. player = new YT.Player("player", {
+               height: "390",
+               width: "640",
+               videoId: "",
+
+           });
+       }
+
+    }
 
 }

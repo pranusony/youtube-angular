@@ -9,8 +9,8 @@ const webpack = require("webpack");
 const webpackMiddleware = require("webpack-dev-middleware");
 const compiler = webpack(webpackConfig);
 
-let server;
-let webpackPlugin;
+var server;
+var webpackPlugin;
 
 util.exec("npm run build",function(){
 
@@ -30,7 +30,7 @@ function serve(){
         }
     });
 
-    let hotReloadPlugin = require("webpack-hot-middleware")(compiler);
+    var hotReloadPlugin = require("webpack-hot-middleware")(compiler);
 
     server.start(httpPort,[webpackPlugin,hotReloadPlugin]);
 

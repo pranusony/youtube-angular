@@ -8,7 +8,7 @@ let server;
 let env = process.env.NODE_ENV || "development";
 let staticPath:string = path.resolve("./");
 
-export function start(port?:number, plugins?:Array<any>):void {
+export function start(port?:any, plugins?:Array<any>):void {
     let httpPort = port;
 
     if (!httpPort || httpPort === 0) {
